@@ -8,6 +8,9 @@ This repository contains a machine learning project aimed at predicting the inve
 
 The transition to sustainable energy requires strategic investment. This project develops a classification model to identify countries likely to be attractive for sustainable energy investments based on a defined set of criteria related to market dynamics, macroeconomic stability, and structural energy needs.
 
+## **Hypothesis:**
+We hypothesize that countries with strong growth in renewable capacity, stable GDP growth, and either high fossil dependence or incomplete electricity access are more attractive for sustainable energy investments than countries with stagnant renewables growth and mature electricity infrastructure.
+
 ## Methodology
 
 1.  **Data Loading and Exploration**: Initial examination of the dataset (`global-data-on-sustainable-energy.csv`).
