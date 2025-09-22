@@ -1,0 +1,19 @@
+# preprocess.log
+
+## Preprocessing Steps Log
+
+- Loaded raw data from Data/Raw/global-data-on-sustainable-energy.csv
+- Dropped target columns from features
+- Split data into train/validation/test by year
+- Replaced infinite values with NaN
+- Applied KNN imputation to missing values (fit on train only)
+- Scaled numeric features using StandardScaler (fit on train only)
+- Cleaned column names (removed special characters)
+- Dropped 'Entity' and 'Year' columns from modeling features
+- Dropped rows with remaining missing values
+- Aligned target variable indices after dropping rows
+- Exported preprocessing pipeline as joblib
+- Verified no data leakage between splits
+- Saved processed datasets for modeling
+
+*Update this log as you add or modify preprocessing steps.*

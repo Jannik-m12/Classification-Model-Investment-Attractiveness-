@@ -1,6 +1,6 @@
 ## Dataset Decision Matrix
 
-Here is a template for a dataset decision matrix. You can score the current dataset (or potential alternative datasets) based on these criteria to help make informed decisions.
+
 
 | Criterion | Score (e.g., 1-5) | Rationale |
 |---|---|---|

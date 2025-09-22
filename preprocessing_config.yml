@@ -1,0 +1,38 @@
+imputation_strategies:
+	rolling_mean:
+		description: |
+			For most numeric features with missing values, a 7-year centered rolling mean was used within each country group. This approach is suitable for time series data where missingness is likely due to reporting gaps or irregular data collection, and the underlying process is expected to be smooth over time. It preserves temporal trends and avoids data leakage by only using past and future values within the same country.
+		features:
+			# List features imputed with rolling mean (example, update as needed)
+			- Renewable_capacity_growth_5y
+			- gdp_growth
+			- Fossil_share
+			- Access to electricity (% of population)
+			# ...add other numeric features as in notebook
+		rationale: |
+			Rolling mean is chosen for features where missingness is likely MCAR/MAR (e.g., due to reporting gaps) and where business meaning supports temporal smoothing (e.g., energy/economic indicators change gradually year to year).
+
+	country_median:
+		description: |
+			For numeric features with remaining missing values after rolling mean imputation, the median value for each country was used. This is robust to outliers and appropriate when missingness is persistent for a country or when a rolling mean cannot be computed (e.g., at series boundaries).
+		features:
+			# List features imputed with country median (example)
+			- CO2_emissions
+			- GDP_per_capita
+		rationale: |
+			Country median is used when missingness is likely MAR or MNAR, and when a stable, representative value is needed for a country. This avoids bias from global means and respects country-specific distributions.
+
+	knn_imputer:
+		description: |
+			For numeric features with missing values in the train/validation/test splits, KNN imputation (k=5) was used, fitted only on the training set. This leverages similarity between countries/years to fill gaps, and is appropriate when missingness is not monotonic and when features are correlated.
+		features:
+			# List features imputed with KNN (example, update as needed)
+			- [add features as in notebook, e.g., any remaining numeric columns in splits]
+		rationale: |
+			KNN imputation is chosen for features where missingness is likely MAR and where similar countries/years can provide reasonable estimates. It is used after splitting to avoid data leakage.
+
+notes:
+	- Only features with missing values in the notebook are included above.
+	- Categorical features were not imputed (none present or all handled as numeric).
+	- Dropped columns with excessive missingness: Financial flows to developing countries (US $), Renewables (% equivalent primary energy), Renewable-electricity-generating-capacity-per-capita.
+	- See notebook for exact feature lists and imputation order.
